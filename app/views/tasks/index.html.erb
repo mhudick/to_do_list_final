@@ -9,11 +9,19 @@
       <th></th>
     </tr>
   </thead>
+  <%= form_for :Task do |f| %>
+  <p>
+    
+    <label for="task_name">Name of task to add</label><br>
+    <input id="task_name" name="task[name]" type="text" /><input name="commit" type="submit" value="Add task" style=float: right; />
+  </p>
+  
+<% end %>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.name %></td> 
+        <td><%= task.name %></td>
         <td><%= link_to 'Done', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tbody>
@@ -21,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Add Task', new_task_path %>
+
