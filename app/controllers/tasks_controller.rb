@@ -31,10 +31,10 @@ class TasksController < ApplicationController
         format.html { redirect_to :back, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
-        format.html {
-          @tasks = Task.all #Needed to render the index page
-          render action: 'index'
-        }
+        format.html { 
+			@tasks = Task.all
+			render action: 'index'
+			}
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
