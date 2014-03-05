@@ -1,5 +1,15 @@
 <h1>Listing tasks</h1>
+<% if @task && @task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
+    <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -9,13 +19,13 @@
       <th></th>
     </tr>
   </thead>
-  <%= form_for :Task do |f| %>
+  <%= form_for :task do |f| %>
   <p>
-    
+
     <label for="task_name">Name of task to add</label><br>
     <input id="task_name" name="task[name]" type="text" /><input name="commit" type="submit" value="Add task" style=float: right; />
   </p>
-  
+
 <% end %>
 
   <tbody>
@@ -28,5 +38,3 @@
 </table>
 
 <br>
-
-
